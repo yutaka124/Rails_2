@@ -1,0 +1,23 @@
+<h1>施設一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>施設名</th>
+      <th>施設詳細</th>
+      <th>料金</th>
+      <th>住所</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.name %></td>
+        <td><%= room.description %></td>
+        <td><%= room.price %></td>
+        <td><%= room.address %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

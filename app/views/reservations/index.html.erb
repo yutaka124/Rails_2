@@ -1,0 +1,36 @@
+<h1>予約済み一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>合計料金</th>
+      <th>チェックイン日</th>
+      <th>チェックアウト日</th>
+      <th>予約確定日時</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <% Rails.logger.info "Processing reservation #{reservation.id}, check_in: #{reservation.check_in}, check_out: #{reservation.check_out}" %>
+      <tr>
+        <td><%= image_tag(reservation.room.image_url) if reservation.room.image_url.present? %></td>
+        <td><%= reservation.room.name %></td>
+        <td><%= reservation.room.description %></td>
+        <% if reservation.check_in.present? && reservation.check_out.present? %>
+          <td><%= reservation.room.price * (reservation.check_out - reservation.check_in).to_i * reservation.guests %> 円</td>
+        <% else %>
+          <td>N/A</td>
+        <% end %>
+        <td><%= reservation.check_in %></td>
+        <td><%= reservation.check_out %></td>
+        <td><%= reservation.created_at %></td>
+        <td><%= link_to '削除', reservation, method: :delete, data: { confirm: '予約を削除しますか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

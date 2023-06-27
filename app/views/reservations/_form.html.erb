@@ -1,0 +1,20 @@
+<%= form_with(model: reservation, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :check_in %>
+    <%= form.date_field :check_in %>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_out %>
+    <%= form.date_field :check_out %>
+  </div>
+
+  <div class="field">
+    <%= form.label :guests %>
+    <%= form.number_field :guests %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,7 +1,7 @@
 <h1><%= @room.name %></h1>
 
 <p>
-  <strong>施設詳細:</strong>
+  <strong>紹介文:</strong>
   <%= @room.description %>
 </p>
 
@@ -15,5 +15,4 @@
   <%= @room.address %>
 </p>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+<%= link_to "予約する", new_reservation_path(room_id: @room.id) %>

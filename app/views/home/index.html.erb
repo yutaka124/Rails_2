@@ -1,0 +1,24 @@
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Welcome to YoyakuApp</h1>
+    <p>あなたに最適な宿泊先を。</p>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Featured Rooms</h2>
+  <div class="row">
+    <% @rooms.each do |room| %>
+      <div class="col-md-4">
+        <div class="card">
+          <%= image_tag room.display_image_url, class: 'card-img-top', alt: 'Room image' %>
+          <div class="card-body">
+            <h5 class="card-title"><%= room.name %></h5> 
+            <p class="card-text"><%= room.description %></p>
+            <%= link_to 'View Room', room_path(room), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,11 +1,5 @@
 <div class="container">
-  <h1>施設一覧</h1>
-
-  <%= form_with(url: search_rooms_path, method: :get, local: true) do |form| %>
-    <%= form.text_field :query, placeholder: "検索..." %>
-    <%= form.submit "検索" %>
-  <% end %>
-
+  <h1>検索結果: <%= @rooms.count %> 件</h1>
   <div class="row">
     <% @rooms.each_with_index do |room, index| %>
       <div class="col-md-4">

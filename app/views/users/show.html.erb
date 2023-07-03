@@ -1,7 +1,7 @@
-<h1><%= @user.name %></h1>
+<h2>プロフィール情報</h2>
 
-<p>
-  <strong>自己紹介:</strong>
-  <%= @user.introduction %>
-</p>
+<p>アイコン画像: <%= image_tag(@user.avatar.presence || "default-avatar.png") %></p>
+<p>名前: <%= @user.name %></p>
+<p>自己紹介: <%= @user.introduction %></p>
 
+<%= link_to 'プロフィールを編集', edit_profile_path %>

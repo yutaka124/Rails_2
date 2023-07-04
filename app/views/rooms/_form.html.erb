@@ -1,24 +1,30 @@
-<%= form_with model: @room, local: true do |form| %>
+<%= form_with model: @room, local: true, html: { class: 'needs-validation', novalidate: true } do |form| %>
 
-  <div>
-    <%= form.label :施設画像 %>
-    <%= form.text_field :image %>
+  <div class="form-group">
+    <%= form.label :施設名, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", required: true %>
   </div>
-  <div>
-    <%= form.label :施設名 %>
-    <%= form.text_field :name %>
+  
+  <div class="form-group">
+    <%= form.label :施設詳細, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", required: true %>
   </div>
-  <div>
-    <%= form.label :紹介文 %>
-    <%= form.text_area :description %>
+  
+  <div class="form-group">
+    <%= form.label :宿泊料金, class: "form-label" %>
+    <%= form.number_field :price, class: "form-control", required: true %>
   </div>
-  <div>
-    <%= form.label :宿泊料金 %>
-    <%= form.number_field :price %>
+  
+  <div class="form-group">
+    <%= form.label :住所, class: "form-label" %>
+    <%= form.text_field :address, class: "form-control", required: true %>
   </div>
-  <div>
-    <%= form.label :住所 %>
-    <%= form.text_field :address %>
+  
+  <div class="form-group">
+    <%= form.label :施設画像, class: "form-label" %>
+    <%= form.file_field :image, class: "form-control-file", required: true %>
   </div>
-  <%= form.submit %>
+
+  <%= form.submit "保存", class: "btn btn-primary" %>
+
 <% end %>

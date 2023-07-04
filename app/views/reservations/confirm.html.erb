@@ -1,27 +1,30 @@
-<% if @reservation.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+<div class="container">
+  <% if @reservation.errors.any? %>
+    <div class="alert alert-danger" id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+      <ul>
+      <% @reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-    <ul>
-    <% @reservation.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+  <h1 class="mb-4">予約確認</h1>
 
-<h1>予約確認</h1>
+  <p>チェックイン日：<%= @reservation.check_in %></p>
+  <p>チェックアウト日：<%= @reservation.check_out %></p>
+  <p>宿泊日数：<%= (@reservation.check_out - @reservation.check_in).to_i %> 日</p>
+  <p>人数：<%= @reservation.guests %> 人</p>
+  <p>支払い金額：<%= @reservation.room.price * (@reservation.check_out - @reservation.check_in).to_i * @reservation.guests %> 円</p>
 
-<p>チェックイン日：<%= @reservation.check_in %></p>
-<p>チェックアウト日：<%= @reservation.check_out %></p>
-<p>宿泊日数：<%= (@reservation.check_out - @reservation.check_in).to_i %> 日</p>
-<p>人数：<%= @reservation.guests %> 人</p>
-<p>支払い金額：<%= @reservation.room.price * (@reservation.check_out - @reservation.check_in).to_i * @reservation.guests %> 円</p>
-
-<%= form_for @reservation, url: reservations_path do |f| %>
-  <%= f.hidden_field :room_id, value: @reservation.room.id %>
-  <%= f.hidden_field :check_in, value: @reservation.check_in %>
-  <%= f.hidden_field :check_out, value: @reservation.check_out %>
-  <%= f.hidden_field :guests, value: @reservation.guests %>
-  <%= f.submit "予約を確定" %>
-<% end %>
+  <%= form_with model: @reservation, url: reservations_path, class: "needs-validation", novalidate: "" do |form| %>
+    <%= form.hidden_field :room_id, value: @reservation.room.id %>
+    <%= form.hidden_field :check_in, value: @reservation.check_in %>
+    <%= form.hidden_field :check_out, value: @reservation.check_out %>
+    <%= form.hidden_field :guests, value: @reservation.guests %>
+    <%= form.submit "予約を確定", class: "btn btn-primary" %>
+  <% end %>
+  
+  <%= link_to '前のページに戻る', :back, class: "btn btn-secondary mt-3" %>
+</div>

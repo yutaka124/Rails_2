@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :rooms do
     collection do
       get 'search'
+      get 'search_by_area'
+      get 'own'
     end
   end
   resources :reservations do

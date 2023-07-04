@@ -5,7 +5,7 @@
 /* app/assets/stylesheets/home.scss */
 
 .hero-image {
-  background-color: black;
+  background-image: url("旅行.jpeg");
   height: 50vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -24,4 +24,10 @@
 
 .navbar-brand {
   font-size: 30px;
+}
+
+.area-image {
+  max-height: 200px;
+  width: auto;
+  object-fit: cover;
 }

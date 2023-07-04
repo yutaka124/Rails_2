@@ -5,20 +5,48 @@
   </div>
 </div>
 
-<div class="container">
-  <h2>Featured Rooms</h2>
+<div class="popular-areas">
+  <h2>人気エリア</h2>
   <div class="row">
-    <% @rooms.each do |room| %>
-      <div class="col-md-4">
-        <div class="card">
-          <%= image_tag room.display_image_url, class: 'card-img-top', alt: 'Room image' %>
+    <div class="col-sm-6 col-md-3">
+      <div class="card">
+        <%= link_to search_by_area_rooms_path(area: '東京') do %>
+          <%= image_tag("東京.jpeg", class: "card-img-top") %>
           <div class="card-body">
-            <h5 class="card-title"><%= room.name %></h5> 
-            <p class="card-text"><%= room.description %></p>
-            <%= link_to 'View Room', room_path(room), class: 'btn btn-primary' %>
+            <h5 class="card-title">東京</h5>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card">
+        <%= link_to search_by_area_rooms_path(area: '大阪') do %>
+          <%= image_tag("大阪.avif", class: "card-img-top") %>
+          <div class="card-body">
+            <h5 class="card-title">大阪</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card">
+        <%= link_to search_by_area_rooms_path(area: '京都') do %>
+          <%= image_tag("京都.jpeg", class: "card-img-top") %>
+          <div class="card-body">
+            <h5 class="card-title">京都</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card">
+        <%= link_to search_by_area_rooms_path(area: '札幌') do %>
+          <%= image_tag("札幌.jpeg", class: "card-img-top") %>
+          <div class="card-body">
+            <h5 class="card-title">札幌</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

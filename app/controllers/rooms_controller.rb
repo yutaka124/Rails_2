@@ -49,13 +49,25 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
-  def search
-    if params[:query].present?
-      @rooms = Room.where("name LIKE ?", "%#{params[:query]}%")
+  def search_by_area
+    if params[:area].present?
+      @rooms = Room.where("address LIKE ?", "%#{params[:area]}%")
     else
       @rooms = Room.all
     end
   end  
+
+  def search_by_area
+    if params[:area].present?
+      @rooms = Room.where("address LIKE ?", "%#{params[:area]}%")
+    else
+      @rooms = Room.all
+    end
+  end
+
+  def own
+    @rooms = Room.where(user_id: current_user.id)
+  end
 
   private
 

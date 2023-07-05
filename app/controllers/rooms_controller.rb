@@ -8,11 +8,11 @@ class RoomsController < ApplicationController
   end
 
   def new
-    @room = Room.new
+    @rooms = current_user.rooms
   end
   
   def create
-    @room = Room.new(room_params)
+    @room = current_user.rooms.build(room_params)
 
     if params[:room][:image]
       @room.image.attach(params[:room][:image])
@@ -54,13 +54,9 @@ class RoomsController < ApplicationController
     end
   end
 
-  def search_by_area
-    if params[:area].present?
-      @rooms = Room.where("address LIKE ?", "%#{params[:area]}%")
-    else
-      @rooms = Room.all
-    end
-  end  
+  def search
+    @rooms = Room.where('name LIKE ? OR description LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
+  end
 
   def search_by_area
     if params[:area].present?

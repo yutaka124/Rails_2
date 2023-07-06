@@ -9,7 +9,7 @@ class Reservation < ApplicationRecord
 
   def check_out_after_check_in
     if check_out.present? && check_in.present? && check_out < check_in
-      errors.add(:check_out, "はチェックイン日よりも後の日付を選択してください")
+      errors.add(:check_out, :check_out_after_check_in)
     end
-  end
+  end  
 end

@@ -1,6 +1,6 @@
 <h2>プロフィール情報</h2>
 
-<p>アイコン画像: <%= image_tag(@user.avatar.presence || "default-avatar.png") %></p>
+<p>アイコン画像: <%= image_tag(@user.avatar.presence || "default-avatar.png", width: 50) %></p>
 <p>名前: <%= @user.username %></p>
 <p>自己紹介: <%= @user.introduction %></p>
 

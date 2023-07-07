@@ -22,6 +22,7 @@ ja:
       reservation:
         check_in: チェックイン日
         check_out: チェックアウト日
+        guests: 人数
   errors:
     format: "%{attribute} %{message}"
     template:

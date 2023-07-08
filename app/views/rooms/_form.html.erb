@@ -1,0 +1,42 @@
+<% if @room.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @room.errors.count %>つのエラーが発生しました:</h2>
+
+    <ul>
+    <% @room.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @room, local: true, html: { class: 'needs-validation', novalidate: true } do |form| %>
+
+  <div class="form-group">
+    <%= form.label :施設名, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", required: true %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :施設詳細, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", required: true %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :宿泊料金, class: "form-label" %>
+    <%= form.number_field :price, class: "form-control", required: true %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :住所, class: "form-label" %>
+    <%= form.text_field :address, class: "form-control", required: true %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :施設画像, class: "form-label" %>
+    <%= form.file_field :image, class: "form-control-file", required: true %>
+  </div>
+
+  <%= form.submit "保存", class: "btn btn-primary" %>
+
+<% end %>

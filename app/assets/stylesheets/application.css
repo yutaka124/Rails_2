@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+.room-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.room-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        reservation:
+          attributes:
+            check_out:
+              check_out_after_check_in: "はチェックイン日よりも後の日付を選択してください"
+      messages:
+        blank: "を入力してください"
+        not_a_number: "は数値で入力してください"
+    models:
+      room: 施設
+      reservation: 予約
+    attributes:
+      room:
+        name: 施設名
+        description: 施設詳細
+        price: 宿泊料金
+        address: 住所
+        image: 施設画像
+      reservation:
+        check_in: チェックイン日
+        check_out: チェックアウト日
+        guests: 人数
+  errors:
+    format: "%{attribute} %{message}"
+    template:
+      header:
+        one: "%{model}に1つのエラーがあります"
+        other: "%{model}に%{count}つのエラーがあります"

@@ -1,0 +1,35 @@
+<div class="container">
+  <% if flash[:error].present? %>
+    <div class="alert alert-danger" id="error_explanation">
+      <h2><%= "#{flash[:error].length}件のエラーが予約の保存を妨げています:" %></h2>
+      <ul>
+      <% flash[:error].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1 class="mb-4"><%= @room.name %>を予約</h1>
+
+  <%= form_with url: confirm_reservations_path, model: @reservation, local: true, class: "needs-validation", novalidate: "" do |form| %>
+    <%= form.hidden_field :room_id, value: @room.id %>
+    
+    <div class="form-group">
+      <%= form.label :check_in, "チェックイン日" %>
+      <%= form.date_field :check_in, required: true, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :check_out, "チェックアウト日" %>
+      <%= form.date_field :check_out, required: true, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :guests, "人数" %>
+      <%= form.number_field :guests, required: true, class: "form-control" %>
+    </div>
+    
+    <%= form.submit "予約する", class: "btn btn-primary" %>
+  <% end %>
+</div>

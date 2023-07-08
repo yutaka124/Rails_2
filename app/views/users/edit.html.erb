@@ -1,0 +1,19 @@
+<h2>プロフィールを編集</h2>
+
+<%= form_for @user do |f| %>
+  <div class="field">
+    <%= f.label :アイコン画像 %><br />
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="field">
+    <%= f.label :名前 %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :自己紹介 %><br />
+    <%= f.text_area :introduction %>
+  </div>
+  <div class="actions">
+    <%= f.submit "更新" %>
+  </div>
+<% end %>

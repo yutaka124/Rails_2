@@ -1,0 +1,6 @@
+<h1>施設の編集</h1>
+
+<%= render 'form' %>
+
+<%= link_to '施設一覧へ戻る', own_rooms_path %>
+<%= link_to '施設を削除する', room_path(@room), method: :delete, data: { confirm: '本当に削除しますか？' } %>

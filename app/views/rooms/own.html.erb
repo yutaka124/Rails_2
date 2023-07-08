@@ -15,7 +15,7 @@
     <% @rooms.each do |room| %>
       <tr>
         <td><%= image_tag room.display_image_url, width: 100 %></td>
-        <td><%= room.name %></td>
+        <td><%= link_to room.name, room_path(room) %></td>
         <td><%= room.description %></td>
         <td><%= room.price %></td>
         <td><%= room.created_at.to_s(:db) %></td>

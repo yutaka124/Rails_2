@@ -1,6 +1,14 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    if params[:area].present? && params[:keyword].present?
+      @rooms = Room.where("address LIKE ? OR (name LIKE ? OR description LIKE ?)", "%#{params[:area]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    elsif params[:area].present?
+      @rooms = Room.where("address LIKE ?", "%#{params[:area]}%")
+    elsif params[:keyword].present?
+      @rooms = Room.where("name LIKE ? OR description LIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+    else
+      @rooms = Room.all
+    end
   end
 
   def show
@@ -55,7 +63,11 @@ class RoomsController < ApplicationController
   end
 
   def search
-    @rooms = Room.where('name LIKE ? OR description LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
+    if params[:query].present?
+      @rooms = Room.where('name LIKE ? OR description LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
+    else
+      @rooms = Room.all
+    end
   end
 
   def search_by_area

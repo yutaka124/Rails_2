@@ -20,7 +20,7 @@
         <% Rails.logger.info "Processing reservation #{reservation.id}, check_in: #{reservation.check_in}, check_out: #{reservation.check_out}" %>
         <tr>
           <td class="col-1"><%= image_tag(reservation.room.display_image_url, class: "img-fluid img-thumbnail", style: 'height: 100px; width: 100px;') %></td>
-          <td class="col-1"><%= reservation.room.name %></td>
+          <td class="col-1"><%= link_to reservation.room.name, room_path(reservation.room) %></td>
           <td class="col-3"><%= reservation.room.description %></td>
           <% if reservation.check_in.present? && reservation.check_out.present? %>
             <td class="col-1"><%= reservation.room.price * (reservation.check_out - reservation.check_in).to_i * reservation.guests %> 円</td>
